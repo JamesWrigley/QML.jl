@@ -153,6 +153,8 @@ Base.convert(::Type{<:QVariant}, x::QVariant) = x
 
 @cxxdereference Base.show(io::IO, x::QVariant) = write(io, string("QVariant of type ", type(x), " with value ", value(x)))
 
+const QStringList = QList{QString}
+
 Base.IndexStyle(::Type{<:QList}) = IndexLinear()
 Base.size(v::QList) = (Int(cppsize(v)),)
 Base.getindex(v::QList, i::Int) = cppgetindex(v,i-1)[]
